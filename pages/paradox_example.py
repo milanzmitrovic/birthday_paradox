@@ -5,6 +5,9 @@ import plotly.express as px
 from dash import Dash, dcc, html, Input, Output, State, callback
 import dash_mantine_components as dmc
 
+from utils.paradox_functions.paradox_functions import data_generation, create_binary_representation_of_sample_data, \
+    create_probability
+
 
 def graph_component():
     return dmc.Skeleton(
@@ -52,38 +55,6 @@ def drawer_component():
     )
 
 
-@validate_arguments()
-def data_generation(
-        number_of_people_in_room: int,
-        sample_size: int
-) -> pd.DataFrame:
-    np_array = np.random.randint(low=1,
-                                 high=366,
-                                 size=[number_of_people_in_room, sample_size]
-                                 )
-    return pd.DataFrame(
-        data=np_array
-    )
-
-
-@validate_arguments(config={'arbitrary_types_allowed': True})
-def does_match_happen(s: pd.Series) -> int:
-    if s.value_counts().sum() > s.value_counts().size:
-        return 1
-    else:
-        return 0
-
-
-@validate_arguments(config={'arbitrary_types_allowed': True})
-def create_binary_representation_of_sample_data(df: pd.DataFrame) -> pd.Series:
-    return df.apply(does_match_happen, axis=0)
-
-
-@validate_arguments(config={'arbitrary_types_allowed': True})
-def create_probability(s: pd.Series) -> float:
-    return s.sum() / s.size
-
-
 def create_layout():
     return dmc.Container(
         fluid=True,
@@ -115,6 +86,8 @@ def main_app_logic(
 ):
     number_of_people_on_birthday = []
     probability_list = []
+    number_of_birthday_matches = []
+    number_of_people_in_group = []
     for i in range(60):
         df = data_generation(
             number_of_people_in_room=i,
@@ -125,6 +98,9 @@ def main_app_logic(
             df.pipe(func=create_binary_representation_of_sample_data)
                 .pipe(func=create_probability)
         )
+
+        number_of_birthday_matches.append(create_binary_representation_of_sample_data(df).sum())
+        number_of_people_in_group.append(create_binary_representation_of_sample_data(df).__len__())
 
         number_of_people_on_birthday.append(i)
         probability_list.append(probability)

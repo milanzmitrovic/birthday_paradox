@@ -4,7 +4,7 @@ import dash_mantine_components as dmc
 from dash import Dash, Input, Output, State, dcc, html, callback
 import pandas as pd
 
-
+from pages.dash_examples import dash_example
 from pages.intro import intro
 from pages.paradox_description import paradox_description
 from pages.plotly_tab import plotly_tab
@@ -29,10 +29,13 @@ app.layout = html.Div([
             dcc.Tab(label='Intro', value='intro'),
 
             dcc.Tab(label='Paradox - Description', value='paradox-description'),
+
             dcc.Tab(label='Paradox - Numerical approach', value='numerical_approach'),
             dcc.Tab(label='Paradox - Analytical approach', value='analytical_approach'),
-            dcc.Tab(label='Paradox - Example', value='tab-example'),
-            dcc.Tab(label='Real world data - US births', value='tab-example1'),
+
+            dcc.Tab(label='Paradox - Example', value='paradox-example'),
+
+            dcc.Tab(label='Real world data - US births', value='real-world-date'),
 
             dcc.Tab(label='Plotly', value='plotly-examples'),
             dcc.Tab(label='Dash', value='dash-examples')
@@ -56,23 +59,23 @@ def render_content(tab):
     elif tab == 'intro':
         return intro()
 
+    elif tab == 'paradox-description':
+        return paradox_description()
+
     elif tab == 'numerical_approach':
         return tab_2()
 
-    elif tab == 'tab-example':
+    elif tab == 'paradox-example':
         return create_layout()
 
-    elif tab == 'tab-example1':
+    elif tab == 'real-world-date':
         return tab_4()
 
     elif tab == 'dash-examples':
-        return tab_4()
+        return dash_example()
 
     elif tab == 'plotly-examples':
         return plotly_tab(df=df)
-
-    elif tab == 'paradox-description':
-        return paradox_description()
 
 
 if __name__ == '__main__':
