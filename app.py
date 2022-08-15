@@ -6,6 +6,7 @@ import pandas as pd
 
 from pages.dash_examples import dash_example
 from pages.intro import intro
+from pages.numerical_approach import numerical_approach
 from pages.paradox_description import paradox_description
 from pages.plotly_tab import plotly_tab
 from pages.tab_2 import tab_2
@@ -20,7 +21,21 @@ df = pd.read_table(
 )
 
 app.layout = html.Div([
-    html.H1('Birthday Paradox & Intro to Dash-Plotly', style={'textAlign': 'center'}),
+
+    dmc.Header(
+        height=60,
+        children=[
+            html.H1("Birthday Paradox & Intro to Dash-Plotly"),
+        ],
+        style={
+            "backgroundColor": "#03a1fc",
+            'textAlign': 'center'
+        }
+    ),
+
+    dmc.Space(h=20),
+
+    # html.H1('Birthday Paradox & Intro to Dash-Plotly', style={'textAlign': 'center'}),
 
     dcc.Tabs(
         id="tabs-example-graph",
@@ -63,7 +78,7 @@ def render_content(tab):
         return paradox_description()
 
     elif tab == 'numerical_approach':
-        return tab_2()
+        return numerical_approach()
 
     elif tab == 'paradox-example':
         return create_layout()

@@ -124,6 +124,8 @@ def main_app_logic(
                       title_x=0.5
                       )
 
+    fig.update_xaxes(showspikes=True)
+
     return fig
 
 

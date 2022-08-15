@@ -61,6 +61,25 @@ def intro():
 
         dmc.Space(h=60),
 
+        html.Hr(),
+        html.Hr(),
+
+        html.H3('Additional information could be found on following links:'),
+
+        # html.Br(),
+
+        html.H4([
+            html.A("GitHub Project", href='https://github.com/milanzmitrovic/birthday_paradox',
+                   target="_blank")
+        ]),
+
+        html.H4([
+            html.A("GitHub Gist", href='https://gist.github.com/milanzmitrovic/134bfc31a3a9540bf2b4f14ceeac56f9',
+                   target="_blank")
+        ]),
+
+        dmc.Space(h=60),
+
     ])
 
 
