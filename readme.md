@@ -13,7 +13,7 @@
 
 ### What is Plotly?
 
-### What is Dash framework?
+### What is Dash web framework?
 
 
 
