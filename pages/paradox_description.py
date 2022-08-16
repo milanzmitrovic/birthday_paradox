@@ -192,12 +192,6 @@ def paradox_description():
         ]),
 
         html.Br(),
-
-        html.Li([
-            'How many times you participated in discussions when two people talking about two different things?'
-        ]),
-
-        html.Br(),
         html.Hr(),
         html.Hr(),
 

@@ -29,6 +29,9 @@ def line_chart(
     )
 
     return dmc.Paper([
+
+        dmc.Title('Line Chart', style={'textAlign': 'center'}),
+
         dcc.Graph(
             figure=fig
         )],

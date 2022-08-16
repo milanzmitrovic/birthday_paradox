@@ -5,6 +5,7 @@ import plotly.express as px
 from dash import Dash, dcc, html, Input, Output, State, callback
 import dash_mantine_components as dmc
 
+from chart_components.analytical_prob_chart import generate_analytical_chart
 from utils.paradox_functions.paradox_functions import data_generation, create_binary_representation_of_sample_data, \
     create_probability
 
@@ -67,7 +68,23 @@ def create_layout():
 
             dmc.Space(h=60),
 
+            html.H2('Numerical Approach', style={'textAlign': 'center'}),
+
             graph_component(),
+
+            html.Br(),
+
+            html.H2('Does probability seem to be linear?'),
+
+            html.Li('This is tricky question :)'),
+
+            dmc.Space(h=40),
+
+            html.H2('Analytical Approach', style={'textAlign': 'center'}),
+
+            generate_analytical_chart(),
+
+            html.Br(),
 
             dmc.Space(h=40)
 
@@ -116,12 +133,11 @@ def main_app_logic(
         x=df_final.filter(items=['Number of people in room'], axis=1).values[:, 0],
         y=df_final.filter(items=['Probability'], axis=1).values[:, 0],
         template='simple_white',
-        title='Birthday Paradox'
     )
 
     fig.update_layout(xaxis_title="Number of People in room",
                       yaxis_title="Probability of having at least two persons born on same day",
-                      title_x=0.5
+                      margin=dict(t=10, l=10, r=10, b=10),
                       )
 
     fig.update_xaxes(showspikes=True)

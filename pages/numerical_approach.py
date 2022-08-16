@@ -69,40 +69,6 @@ def numerical_approach():
 
 
 
-# Analytic VS Numeric approach
-# More intuitive? -->
-# More general? -->
-# Older? -->
-# More modern? -->
-# Computationally efficient? -->
-
-
-# Analytical approach:
-# count(number of cases we like) / count(number of all possible cases) * 100
-
-
-# We will use small trick :)
-
-# Instead of calculating probability of having of AT LEAST two matching birthdays,
-# lets calculate probability of NOT having at least two birthdays.
-
-# [probability of having at least two birthdays] + [probability of NOT having at least two birthdays] = 1
-# So, [probability of having at least two birthdays] = 1 - [probability of NOT having at least two birthdays]
-
-
-# 365/365 * 364/365
-#
-# n = 365
-# # Probability of not having two people sharing same birthday
-# prob = 1
-# for i in range(90):
-#     prob = prob * (n - i) / 365
-#
-#     print(i, 'Probability of not having common birthdays', prob)
-#     print(i, 'Probability of having common birthdays', 1 - prob)
-#     print('---------')
-#
-#
 
 
 
