@@ -15,6 +15,8 @@
 
 ### What is Dash web framework?
 
+#### Very usefull GitHug Gists can be found using this [link](https://gist.github.com/milanzmitrovic/134bfc31a3a9540bf2b4f14ceeac56f9)
+
 
 
 
